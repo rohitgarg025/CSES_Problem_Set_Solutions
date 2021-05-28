@@ -71,7 +71,9 @@ void solve(){
 
 }
 
-void aliter(){
+int main()
+{
+    FAST_IO;
     int n;
     cin >>n;
     vector <pair <int,int> > in(n), out(n);
@@ -107,11 +109,5 @@ void aliter(){
         cout << ans[i] + 1 << " ";
     }
 
-}
-
-int main()
-{
-    FAST_IO;
-    solve();
     return 0;
 }
