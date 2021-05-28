@@ -36,11 +36,6 @@ void solve(){
         pq.push({x.first + v[x.second],x.second});
     }
     
-    
-
-    
-
-
     // M2 (0-2) M1(0-3) M3(0-5) M2(2-4) M1(3-6) M2(4-6) M2(6-8)
     // Input:
     // 3 7
@@ -55,9 +50,49 @@ void solve(){
     
 }
 
+void solution(){
+    //brute force solution
+    // go through all the time and __check
+    // may go to 10^18 time
+
+    // binary search implementation
+    //because of predicate 
+
+    int n,m;
+    cin >> n >> m;
+    vector <int> machines(n);
+    for(int i=0;i<n;i++){
+        cin >> machines[i];
+    }
+
+    ll low = 0;
+    ll high = 1e18;
+    ll answer = 1e18;
+
+    while(low <= high){
+        ll mid = (low+ high)/2;
+        ll products = 0;
+        for(int i=0;i<n;i++){
+            products += min(mid/machines[i],(ll)1e9);
+        }
+
+        if(products >= m){
+            if(mid < answer)
+                answer = mid;
+            high = mid-1;
+        }
+        else{
+            low = mid + 1;
+        }
+    }
+
+    cout << answer << endl;
+}
+
 int main()
 {
     FAST_IO;
-    solve();
+    // solve();
+    solution();
     return 0;
 }
