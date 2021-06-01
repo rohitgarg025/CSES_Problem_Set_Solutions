@@ -17,8 +17,8 @@
 using namespace std;
 
 
-int sum(vector <int> &coins, int x){
-    vector <int> dp(x+1,INT_MAX);
+ll sum(vector <int> &coins, int x){
+    vector <ll> dp(x+1,INT_MAX);
     // dp[i] = min number of coins required to produce sum i
     dp[0] = 0;
     for (int i = 1; i <= x; i++)
@@ -49,9 +49,9 @@ void solve()
         cin >> it;
     }
 
-    for(auto it : coins){
-        cout << it << " ";
-    }
+    // for(auto it : coins){
+    //     cout << it << " ";
+    // }
 
     cout << sum(coins, x) << endl;
 
