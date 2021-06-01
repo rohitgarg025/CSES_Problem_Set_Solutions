@@ -12,7 +12,7 @@
     cin.tie(NULL);                    \
     cout.tie(NULL)
 #define ll long long int
-#define mod 1000000007
+// #define mod 1000000007
 
 using namespace std;
 
@@ -28,11 +28,35 @@ ll dice(ll n){
 
 }
 
+
+ll dice_bottom_up(ll n){
+    vector<int> dp(n+1,0);
+    int mod = 1e9+7;
+    dp[0]=1;
+    dp[1]=1;
+
+    for (int i = 2; i <= n; i++)
+    {
+        
+        for (int j = 1; j <= 6; j++)
+        {
+            if(i-j>=0){
+                (dp[i] += dp[i-j])%= mod;
+            }
+            
+        }
+
+    }
+    
+    return dp[n];
+
+}
+
 void solve()
 {
     ll n;
     cin >> n;
-    cout << dice(n)%mod << endl;
+    cout << dice_bottom_up(n) << endl;
 }
 
 int main()
@@ -57,3 +81,8 @@ int main()
 
     return 0;
 }
+
+
+/*
+Link to editorial: https://codeforces.com/blog/entry/70018
+*/
